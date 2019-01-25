@@ -33,11 +33,11 @@ RUN touch /usr/local/etc/php/conf.d/xdebug.ini; \
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # set up mailhog as sendmail target
-RUN echo "mailhub=localhost:1025" >> /etc/ssmtp/ssmtp.conf
+RUN echo "mailhub=mailhog:1025" >> /etc/ssmtp/ssmtp.conf
 RUN echo "sendmail_path=sendmail -i -t" >> /usr/local/etc/php/conf.d/php-sendmail.ini
 
-COPY config/config.inc.php /var/www/config.inc.php
-COPY config/docker-php-entrypoint /usr/local/bin/
+COPY config.inc.php /var/www/config.inc.php
+COPY docker-php-entrypoint /usr/local/bin/
 
 RUN export PHP_IDE_CONFIG="serverName=Docker"
 
