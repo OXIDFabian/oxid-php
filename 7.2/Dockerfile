@@ -1,5 +1,8 @@
 FROM php:7.2-fpm
 
+ENV COMPOSER_ALLOW_SUPERUSER 1
+ENV COMPOSER_HOME /tmp
+
 # install dependencies and cleanup (needs to be one step, as else it will cache in the laver)
 RUN apt-get update -y && \
     apt-get install -y --no-install-recommends \
