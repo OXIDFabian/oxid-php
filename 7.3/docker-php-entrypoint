@@ -111,7 +111,7 @@ class ShopLicense extends \OxidEsales\Eshop\Application\Controller\Admin\ShopLic
     }
 }
 $config = \OxidEsales\Eshop\Core\Registry::getConfig();
-$config->saveShopConfVar( 'arr', 'aSerials', array('\getenv('OXID_SERIAL')') );
+$config->saveShopConfVar( 'arr', 'aSerials', array(\getenv('OXID_SERIAL')) );
 $license = oxNew(ShopLicense::class);
 $license->updateShopSerial();
 EOPHP
