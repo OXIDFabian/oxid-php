@@ -73,7 +73,7 @@ then
         mysql -h ${MYSQL_HOST} -u ${MYSQL_USER} -p${MYSQL_PASSWORD} ${MYSQL_DATABASE} < /var/www/html/vendor/oxid-esales/oxideshop-demodata-${OXID_EDITION}/src/demodata.sql
         fi
         php /var/www/html/vendor/bin/oe-eshop-db_views_regenerate
-        rm -rf /var/www/html/source/Setup/
+        mv /var/www/html/source/Setup/ /var/www/html/source/_Setup/
         echo "demodata installed"
     else
         mysql -h ${MYSQL_HOST} -u ${MYSQL_USER} -p${MYSQL_PASSWORD} ${MYSQL_DATABASE} < /var/www/html/source/Setup/Sql/initial_data.sql
@@ -82,7 +82,7 @@ then
         echo "migration done"
         php /var/www/html/vendor/bin/oe-eshop-db_views_regenerate
         echo "views regenerated"
-        rm -rf /var/www/html/source/Setup/
+        mv /var/www/html/source/Setup/ /var/www/html/source/_Setup/
         echo "database initialized without demodata"
     fi
 
