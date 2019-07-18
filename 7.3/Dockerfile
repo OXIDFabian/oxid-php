@@ -6,7 +6,7 @@ ENV COMPOSER_HOME /tmp
 # install dependencies and cleanup (needs to be one step, as else it will cache in the laver)
 RUN apt-get update -y && \
     apt-get install -y --no-install-recommends \
-    git ssmtp mysql-client iproute2 libfreetype6 libjpeg62-turbo libcurl4-openssl-dev libjpeg-dev libpng-dev libxml2-dev libmemcached-dev libzip-dev sudo && \
+    git msmtp default-mysql-client iproute2 libfreetype6 libjpeg62-turbo libcurl4-openssl-dev libjpeg-dev libpng-dev libxml2-dev libmemcached-dev libzip-dev sudo && \
     pecl install xdebug memcached && \
     docker-php-ext-enable xdebug && \
     docker-php-ext-configure gd --with-jpeg-dir=/usr/local/ && \
