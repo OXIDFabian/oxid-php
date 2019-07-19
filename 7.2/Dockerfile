@@ -38,7 +38,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # set up mailhog as sendmail target
 RUN echo "host mailhog" >> /etc/msmtprc
 RUN echo "port 1025" >> /etc/msmtprc
-RUN echo "sendmail_path=/usr/sbin/msmtp -t" >> /usr/local/etc/php/conf.d/php-sendmail.ini
+RUN echo "sendmail_path=/usr/bin/msmtp -t" >> /usr/local/etc/php/conf.d/php-sendmail.ini
 
 COPY config.inc.php /var/www/config.inc.php
 COPY docker-php-entrypoint /usr/local/bin/
