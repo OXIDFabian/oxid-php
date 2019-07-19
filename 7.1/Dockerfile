@@ -10,7 +10,7 @@ RUN apt-get update -y && \
     pecl install xdebug memcached && \
     docker-php-ext-enable xdebug && \
     docker-php-ext-configure gd --with-jpeg-dir=/usr/local/ && \
-    docker-php-ext-install -j$(nproc) curl json xml mbstring zip bcmath soap pdo_mysql gd && \
+    docker-php-ext-install -j$(nproc) curl json xml mbstring zip bcmath soap pdo_mysql gd mysqli && \
     apt-get clean && \
     apt-get autoremove -y && \
     apt-get purge -y --auto-remove libcurl4-openssl-dev libjpeg-dev libpng-dev libxml2-dev libmemcached-dev && \
