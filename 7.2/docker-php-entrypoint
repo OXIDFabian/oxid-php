@@ -53,6 +53,8 @@ chmod -R 775 /var/www/html/
 chmod 444 /var/www/html/source/config.inc.php
 chmod 444 /var/www/html/source/.htaccess
 
+if [ "${INSTALL_SHOP}" != false ]
+then
 #check if db container is ready
 while ! mysql -h ${MYSQL_HOST} -u ${MYSQL_USER} -p${MYSQL_PASSWORD} ${MYSQL_DATABASE} -e 'SHOW GLOBAL STATUS LIKE "Uptime"' --connect_timeout=10; do sleep 10; echo "DB not ready"; done
 
@@ -189,6 +191,7 @@ fi
 
 chown -R www-data:www-data /var/www/html/*
 
+fi
 fi
 
 exec "$@"
