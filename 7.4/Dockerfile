@@ -8,10 +8,10 @@ ENV RUN_COMPOSER true
 # install dependencies and cleanup (needs to be one step, as else it will cache in the laver)
 RUN apt-get update -y && \
     apt-get install -y --no-install-recommends \
-    git msmtp default-mysql-client iproute2 libfreetype6 libjpeg62-turbo libcurl4-openssl-dev libjpeg-dev libpng-dev libxml2-dev libmemcached-dev libzip-dev sudo && \
+    git msmtp default-mysql-client iproute2 libfreetype6 libjpeg62-turbo libcurl4-openssl-dev libjpeg-dev libpng-dev libxml2-dev libmemcached-dev libzip-dev libonig-dev sudo && \
     pecl install xdebug memcached && \
     docker-php-ext-enable xdebug && \
-    docker-php-ext-configure gd --with-jpeg-dir=/usr/local/ && \
+    docker-php-ext-configure gd --with-jpeg && \
     docker-php-ext-install -j$(nproc) curl json xml mbstring zip bcmath soap pdo_mysql gd mysqli && \
     apt-get clean && \
     apt-get autoremove -y && \
