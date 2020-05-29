@@ -19,22 +19,22 @@ if [ "${RUN_COMPOSER}" != false ]; then
         case "$OXID_EDITION" in
         ce)
             echo "Downloading CE files..."
-            composer create-project --no-interaction --no-dev oxid-esales/oxideshop-project /var/www/html dev-b-${OXID_VERSION}-ce
+            composer create-project -vvv --profile --no-interaction --no-dev oxid-esales/oxideshop-project /var/www/html dev-b-${OXID_VERSION}-ce
             echo "Download CE files done"
             ;;
         pe)
             echo "Downloading PE files..."
-            composer create-project --no-interaction --no-dev oxid-esales/oxideshop-project /var/www/html dev-b-${OXID_VERSION}-pe
+            composer create-project -vvv --profile --no-interaction --no-dev oxid-esales/oxideshop-project /var/www/html dev-b-${OXID_VERSION}-pe
             echo "Download PE files done"
             ;;
         ee)
             echo "Downloading EE files..."
-            composer create-project --no-interaction --no-dev oxid-esales/oxideshop-project /var/www/html dev-b-${OXID_VERSION}-ee
+            composer create-project -vvv --profile --no-interaction --no-dev oxid-esales/oxideshop-project /var/www/html dev-b-${OXID_VERSION}-ee
             echo "Download EE files done"
             ;;
         b2b)
             echo "Downloading B2B files..."
-            composer create-project --no-interaction --no-dev oxid-esales/oxideshop-project /var/www/html dev-b-${OXID_VERSION}-ee
+            composer create-project -vvv --profile --no-interaction --no-dev oxid-esales/oxideshop-project /var/www/html dev-b-${OXID_VERSION}-ee
             composer config repositories.oxid-esales/b2b-module composer https://b2b-edition.packages.oxid-esales.com
             composer require oxid-esales/b2b-module ^v3.1.0
             echo "Download B2B files done"
