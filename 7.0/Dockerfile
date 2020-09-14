@@ -19,7 +19,7 @@ RUN apt-get update -y && \
 
 # configure PHP
 RUN touch /usr/local/etc/php/conf.d/php.ini; \
-        echo memory_limit=512M >> /usr/local/etc/php/conf.d/php.ini
+        echo memory_limit=-1 >> /usr/local/etc/php/conf.d/php.ini
 
 # configure xdebug
 RUN touch /usr/local/etc/php/conf.d/xdebug.ini; \
