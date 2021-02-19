@@ -24,8 +24,7 @@ RUN touch /usr/local/etc/php/conf.d/php.ini; \
 
 # configure xdebug
 RUN touch /usr/local/etc/php/conf.d/xdebug.ini; \
-	echo xdebug.mode=profile >> /usr/local/etc/php/conf.d/xdebug.ini; \
-  	echo xdebug.client_port=9001 >> /usr/local/etc/php/conf.d/xdebug.ini; \
+	echo xdebug.mode=debug >> /usr/local/etc/php/conf.d/xdebug.ini; \
   	echo xdebug.client_host=host.docker.internal >> /usr/local/etc/php/conf.d/xdebug.ini; \
   	echo xdebug.idekey=PHPSTORM >> /usr/local/etc/php/conf.d/xdebug.ini; \
   	echo xdebug.remote_handler=dbgp >> /usr/local/etc/php/conf.d/xdebug.ini; \
