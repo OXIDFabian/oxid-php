@@ -163,6 +163,12 @@ EOPHP
             esac
 
             if [ "${OXID_EDITION}" = "b2b" ]; then
+            
+                # B2B demodata: setup database missing hostname workaround
+                # see https://github.com/OXID-eSales/b2b-services-module/pull/1
+                sed -i 's!$db = new \\PDO("mysql:dbname=$databaseName", $databaseUser, $databasePassword);!$db = new \\PDO("mysql:dbname=$databaseName;host=".$config->getConfigParam("dbHost"), $databaseUser, $databasePassword);!g' /var/www/html/source/modules/b2b/Services/Command/Target/Database.php
+                echo "B2B setup database fix injected."
+            
                 php /var/www/html/source/modules/b2b/Setup/setupB2bEnvironment.php
                 rm -R /var/www/html/source/modules/b2b/Setup
                 echo "B2B Modules installed"
