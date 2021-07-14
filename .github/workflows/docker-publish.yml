@@ -59,4 +59,4 @@ jobs:
         with:
           context: ./7.4/
           push: ${{ github.event_name != 'pull_request' }}
-          tags: OXIDFabian/oxid-php:7.4
+          tags: oxidfabian/oxid-php:7.4
