@@ -58,6 +58,7 @@ jobs:
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
           context: ./7.4/
+          platforms: linux/amd64,linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ env.REGISTRY }}/oxidfabian/oxid-php:7.4
           secrets: |
@@ -69,6 +70,7 @@ jobs:
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
           context: ./8.0/
+          platforms: linux/amd64,linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ env.REGISTRY }}/oxidfabian/oxid-php:8.0
           secrets: |
