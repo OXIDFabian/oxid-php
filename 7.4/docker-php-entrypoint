@@ -71,7 +71,7 @@ if [ "${RUN_COMPOSER}" != false ]; then
                     else
                         mysql -h ${MYSQL_HOST} -u ${MYSQL_USER} -p${MYSQL_PASSWORD} ${MYSQL_DATABASE} </var/www/html/vendor/oxid-esales/oxideshop-demodata-${OXID_EDITION}/src/demodata.sql
                     fi
-                    php /var/www/html/vendor/bin/oe-eshop-db_views_regenerate
+                    php /var/www/html/vendor/bin/oe-eshop-db_views_generate
                     mv /var/www/html/source/Setup/ /var/www/html/source/_Setup/
                     echo "demodata installed"
                 else
@@ -79,8 +79,8 @@ if [ "${RUN_COMPOSER}" != false ]; then
                     echo "initial data imported"
                     php /var/www/html/vendor/bin/oe-eshop-doctrine_migration migrations:migrate
                     echo "migration done"
-                    php /var/www/html/vendor/bin/oe-eshop-db_views_regenerate
-                    echo "views regenerated"
+                    php /var/www/html/vendor/bin/oe-eshop-db_views_generate
+                    echo "views generated"
                     mv /var/www/html/source/Setup/ /var/www/html/source/_Setup/
                     echo "database initialized without demodata"
                 fi
