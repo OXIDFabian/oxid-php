@@ -73,6 +73,8 @@ jobs:
           context: ./7.4/
           platforms: linux/amd64,linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
           tags: |
             ${{ env.REGISTRY }}/oxidfabian/oxid-php:7.4
             oxidfabian/oxid-php:7.4
@@ -87,6 +89,8 @@ jobs:
           context: ./8.0/
           platforms: linux/amd64,linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
           tags: |
             ${{ env.REGISTRY }}/oxidfabian/oxid-php:8.0
             oxidfabian/oxid-php:8.0
