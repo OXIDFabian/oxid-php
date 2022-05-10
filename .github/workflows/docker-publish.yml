@@ -121,5 +121,5 @@ jobs:
         # This step uses the identity token to provision an ephemeral certificate
         # against the sigstore community Fulcio instance.
         run: |
-          cosign sign ${{ steps.meta.outputs.tags }}@${{ steps.build-and-push-74.outputs.digest }}
-          cosign sign ${{ steps.meta.outputs.tags }}@${{ steps.build-and-push-80.outputs.digest }}
+          cosign sign ${{ env.REGISTRY }}/${{ env.REPO }}:7.4@${{ steps.build-and-push-74.outputs.digest }}
+          cosign sign ${{ env.REGISTRY }}/${{ env.REPO }}:8.0@${{ steps.build-and-push-80.outputs.digest }}
