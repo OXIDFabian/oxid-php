@@ -139,3 +139,4 @@ jobs:
         if: always() 
         with:
           sarif_file: 'trivy-php${{ matrix.php_version }}-results.sarif'
+          category: 'php${{ matrix.php_version }}'
