@@ -109,3 +109,33 @@ jobs:
         # against the sigstore community Fulcio instance.
         run: |
           cosign sign ${{ env.REGISTRY }}/${{ env.REPO }}:${{ matrix.php_version }}@${{ steps.build-and-push.outputs.digest }}
+
+  scan_image:
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+    needs:
+      - build
+
+    strategy:
+      fail-fast: false
+      matrix:
+        php_version: [ "7.3", "7.4", "8.0", "8.1" ]
+
+    steps:
+      - name: downcase REPO
+        run: |
+          echo "REPO=${GITHUB_REPOSITORY,,}" >>${GITHUB_ENV}
+
+      - name: Run Trivy vulnerability scanner for php ${{ matrix.php_version }}
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'ghcr.io/${{ env.REPO }}:${{ matrix.php_version }}'
+          format: 'sarif'
+          output: 'trivy-php${{ matrix.php_version }}-results.sarif'
+
+      - name: Upload Trivy scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v2
+        if: always() 
+        with:
+          sarif_file: 'trivy-php${{ matrix.php_version }}-results.sarif'
