@@ -36,7 +36,7 @@ if [ "${RUN_COMPOSER}" != false ]; then
             echo "Downloading B2B files..."
             composer create-project -vvv --profile --no-interaction --no-dev oxid-esales/oxideshop-project /var/www/html dev-b-${OXID_VERSION}-ee
             composer config repositories.oxid-esales/b2b-module composer https://b2b-edition.packages.oxid-esales.com
-            composer require oxid-esales/b2b-module ^v3.1.0
+            composer require oxid-esales/b2b-module
             echo "Download B2B files done"
             ;;
         esac
