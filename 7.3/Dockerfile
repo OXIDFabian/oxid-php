@@ -9,7 +9,7 @@ ENV RUN_COMPOSER true
 RUN apt-get update -y && \
     apt-get install -y --no-install-recommends \
     git msmtp default-mysql-client iproute2 libfreetype6 libjpeg62-turbo libcurl4-openssl-dev libjpeg-dev libpng-dev libxml2-dev libmemcached-dev libzip-dev libonig-dev sudo && \
-    pecl install xdebug memcached && \
+    pecl install xdebug-3.1.6 memcached && \
     docker-php-ext-enable xdebug && \
     docker-php-ext-configure gd --with-jpeg-dir=/usr/local/ && \
     docker-php-ext-install -j$(nproc) curl json xml mbstring zip bcmath soap pdo_mysql gd mysqli && \
