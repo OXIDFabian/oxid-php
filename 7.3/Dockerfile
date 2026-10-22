@@ -6,7 +6,8 @@ ENV INSTALL_SHOP true
 ENV RUN_COMPOSER true
 
 # install dependencies and cleanup (needs to be one step, as else it will cache in the laver)
-RUN apt-get update -y && \
+RUN sed -i '/security.debian.org/d' /etc/apt/sources.list && \
+    apt-get update -y && \
     apt-get install -y --no-install-recommends \
     git msmtp default-mysql-client iproute2 libfreetype6 libjpeg62-turbo libcurl4-openssl-dev libjpeg-dev libpng-dev libxml2-dev libmemcached-dev libzip-dev libonig-dev sudo && \
     pecl install xdebug-3.1.6 memcached && \
